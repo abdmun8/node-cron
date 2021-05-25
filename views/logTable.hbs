@@ -1,0 +1,37 @@
+<h1>API netapss monitoring</h1>
+<pre>http://netapps.trakindo.co.id/EmployeeMasterAPI/api/employee?employeeUsername=XUPJ21RKL</pre>
+<table class="table table-bordered table-sm">
+    <tr>
+        <th>Time</th>
+        <th>Message</th>
+    </tr>
+    {{#each data as |row|}}
+    <tr>
+        <td>{{row.time}}</td>
+        <td>{{row.message}}</td>
+    </tr>
+    {{/each}}
+
+</table>
+
+<div class="pagination-container">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-sm">
+            <li class="page-item"><a class="page-link" href="{{pagination.first}}">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="{{pagination.prev}}">Prev</a></li>
+            <li class="page-item active"><a class="page-link" href="#">{{pagination.current}}</a></li>
+            <li class="page-item"><a class="page-link" href="{{pagination.next}}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="{{pagination.last}}">&raquo;</a></li>
+        </ul>
+    </nav>
+    <p>PAGE {{pagination.current}} OF {{total}}</p>
+</div>
+
+<style>
+    .pagination-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

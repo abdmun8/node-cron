@@ -65,7 +65,7 @@ const timeout = setTimeout(() => {
   controller.abort();
 }, 30000);
 
-cron.schedule("* 5 * * *", () => {
+cron.schedule("0 5 * * *", () => {
   fetch(url, { signal: controller.signal })
     .then((resp) => resp.json())
     .then(

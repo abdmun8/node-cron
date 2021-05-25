@@ -39,7 +39,7 @@ app.get("/", function (req, res) {
       }
       const data = rows.map((row) => ({
         ...row,
-        time: new Date(row.time).toLocaleString(),
+        time: new Date(row.time).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }),
       }));
 
       const totalPage = Math.ceil(row.total / show);
@@ -65,7 +65,7 @@ const timeout = setTimeout(() => {
   controller.abort();
 }, 30000);
 
-cron.schedule(process.env.INTERVAL, () => {
+cron.schedule("* 5 * * *", () => {
   fetch(url, { signal: controller.signal })
     .then((resp) => resp.json())
     .then(

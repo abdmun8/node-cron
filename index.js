@@ -5,9 +5,9 @@ const fetch = require("node-fetch");
 const AbortController = require("abort-controller");
 const exphbs = require("express-handlebars");
 const app = express();
+require("dotenv").config();
 
-const url =
-  "http://netapps.trakindo.co.id/EmployeeMasterAPI/api/employee?employeeUsername=XUPJ21RKL";
+const url = process.env.TEST_URL;
 
 app.engine(
   "hbs",
@@ -47,6 +47,7 @@ app.get("/", function (req, res) {
       res.render("logTable.hbs", {
         data,
         total: totalPage,
+        url,
         pagination: {
           current: page,
           next: page + 1 > totalPage ? "#" : `?page=${page + 1}`,

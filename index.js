@@ -65,7 +65,7 @@ const timeout = setTimeout(() => {
   controller.abort();
 }, 30000);
 
-cron.schedule("* * * * *", () => {
+cron.schedule(process.env.INTERVAL, () => {
   fetch(url, { signal: controller.signal })
     .then((resp) => resp.json())
     .then(
@@ -93,4 +93,4 @@ cron.schedule("* * * * *", () => {
     });
 });
 
-app.listen(5500);
+app.listen(process.env.PORT);
